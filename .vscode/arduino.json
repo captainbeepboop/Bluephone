@@ -1,0 +1,5 @@
+{
+    "board": "arduino:avr:uno",
+    "sketch": "bluephone1/bluephone1.ino",
+    "port": "/dev/tty.usbmodem1101"
+}
