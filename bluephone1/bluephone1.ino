@@ -954,15 +954,15 @@ void button_update(int button, bool state)
                         {
                             if (drum_track == 0)
                             {
-                                drum_preset1++;
-                                if (drum_preset1 > 9)
-                                {drum_preset1 = 1;}
+                                drum_preset1--;
+                                if (drum_preset1 < 1)
+                                {drum_preset1 = 9;}
                             }
                             else
                             {
-                                drum_preset2++;
-                                if (drum_preset2 > 9)
-                                {drum_preset2 = 1;}
+                                drum_preset2--;
+                                if (drum_preset2 < 1)
+                                {drum_preset2 = 9;}
                             }
                             load_drums(drum_preset1, drum_preset2);
                         }
@@ -973,15 +973,15 @@ void button_update(int button, bool state)
                         {
                             if (drum_track == 0)
                             {
-                                drum_preset1--;
-                                if (drum_preset1 < 1)
-                                {drum_preset1 = 9;}
+                                drum_preset1++;
+                                if (drum_preset1 > 9)
+                                {drum_preset1 = 1;}
                             }
                             else
                             {
-                                drum_preset2--;
-                                if (drum_preset2 < 1)
-                                {drum_preset2 = 9;}
+                                drum_preset2++;
+                                if (drum_preset2 > 9)
+                                {drum_preset2 = 1;}
                             }
                             load_drums(drum_preset1, drum_preset2);
                         }
