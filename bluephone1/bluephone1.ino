@@ -96,6 +96,7 @@ uint8_t note4 = 48;
 uint8_t note5 = 0;
 uint8_t note6 = 0;
 
+bool lead_follows = 0;
 
 //beat stuff
 #define max_beats 128
@@ -447,7 +448,7 @@ void the_beat()
                 }
             }
 
-            if ((last_button == 0 && button_status[11] == 0) || mode != 3)
+            if ((last_button == 0 && button_status[11] == 0) || (mode != 3 && lead_follows == 0))
             {
                 if (48 + scale[vibe][leads[lead_track][beat_count] - 1] + octave2*12 + key != note4)
                 { 
@@ -826,12 +827,7 @@ void button_update(int button, bool state)
                         {
                             if (mode == 2)
                             {
-                                chord_track = !chord_track;
-                                lead_track = chord_track;
-                                table[5][11] = !chord_track;
-                                table[5][12] = chord_track;
-                                table[5][13] = !lead_track;
-                                table[5][14] = lead_track;
+                                lead_follows = !lead_follows;
                             }
                             else if (chord_mute == 1)
                             {
@@ -908,6 +904,12 @@ void button_update(int button, bool state)
                                 MIDI.sendNoteOn(note1, 127, 2);
                                 MIDI.sendNoteOn(note2, 127, 3);
                                 MIDI.sendNoteOn(note3, 127, 4);
+
+                                if (lead_follows == 1)
+                                {
+                                note4 = 48 + scale[vibe][button - 1] + octave2*12 + key;
+                                MIDI.sendNoteOn(note4, 127, 5);
+                                }
                             }
                             
                             if (mode == 3)

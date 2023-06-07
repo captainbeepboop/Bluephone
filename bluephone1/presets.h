@@ -34,13 +34,13 @@ const int preset_settings[10][number_of_preset_settings] PROGMEM =
     {1, 1, 1, 2, 0, 32, 2, 0, 8},
     //3 - HEAVEN
     {1, 0, 1, 0, 0, 0, 0, 0, 0},
-    //4 - KIDS
-    {0, 0, 1, 0, 0, 0, 0, 0, 0},
+    //4 - KIDS and MUSHROOM
+    {1, 1, 0, 0, 0, 0, 0, 0, 0},
     //5 - BELIEVE
     {1, 0, 0, 0, 0, 0, 0, 0, 0},
     //6 - ANIME
     {0, 0, 0, 0, 0, 0, 0, 0, 0},
-    //7 - 
+    //7 -PLAN B
     {0, 0, 0, 0, 0, 0, 0, 0, 0},
     //8 - 
     {0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -67,8 +67,9 @@ const uint8_t c_turing[] PROGMEM = {8, 1, 0, 4, 0, 255};
 const uint8_t c_kids[] PROGMEM = {8, 6, 0, 4, 0, 1, 0, 5, 0, 255};
 const uint8_t l_kids[] PROGMEM = {2, 1, 1, 2, 2, 3, 3, 5, 5, 6, 6, 7, 6, 6, 5, 5, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 2, 2, 3, 3, 5, 5, 6, 6, 7, 6, 6, 5, 5, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 255};
 
-// ANIME CHORDS
-const uint8_t c_anime[] PROGMEM = {8, 4, 0, 5, 0, 3, 0, 6, 0, 255};
+// MUSHROOM
+const uint8_t c_mushroom[] PROGMEM = {16, 1, 1, 1, 0, 4, 4, 4, 0, 255};
+const uint8_t l_mushroom[] PROGMEM = {4, 1, 3, 5, 3, 1, 3, 5, 3, 1, 3, 5, 3, 1, 3, 5, 3, 4, 6, 8, 6, 4, 6, 8, 6, 4, 6, 8, 6, 4, 6, 8, 5, 255};
 
 // BELIEVE
 const uint8_t c_believe_v[] PROGMEM = {16, 1, 0, 3, 0, 4, 0, 5, 0, 255};
@@ -78,6 +79,11 @@ const uint8_t c_believe_c[] PROGMEM = {8, 1, 0, 5, 0, 2, 0, 4, 0, 1, 0, 5, 0, 2,
 const uint8_t c_heaven_c[] PROGMEM = {4, 4, 0, 5, 0, 6, 6, 6, 0, 1, 1, 1, 0, 4, 4, 4, 0, 4, 0, 5, 0, 6, 6, 6, 0, 5, 5, 5, 5, 5, 5, 5, 0, 255};
 const uint8_t c_heaven_v[] PROGMEM = {8, 1, 0, 6, 0, 5, 5, 5, 0, 2, 0, 6, 0, 2, 0, 5, 0, 255};
 const uint8_t l_heaven_c[] PROGMEM = {1, 6, 6, 0, 0, 6, 6, 0, 0, 7, 7, 0, 7, 7, 0, 7, 0, 8, 8, 0, 0, 8, 8, 8, 0, 8, 8, 0, 8, 8, 0, 9, 0, 10, 10, 0, 0, 10, 10, 0, 0, 12, 12, 0, 12, 12, 0, 10, 0, 6, 6, 0, 0, 6, 6, 0, 0, 6, 6, 0, 6, 6, 0, 7, 0, 6, 6, 0, 0, 6, 6, 0, 0, 7, 7, 0, 7, 7, 0, 7, 0, 8, 8, 0, 0, 8, 8, 0, 0, 8, 8, 0, 8, 8, 0, 8, 0, 7, 7, 0, 0, 7, 7, 0, 0, 7, 7, 0, 7, 7, 0, 7, 0, 8, 8, 0, 0, 8, 8, 0, 0, 8, 8, 0, 8, 8, 0, 9, 0, 255};
+
+// PLAN B
+const uint8_t c_planb[] PROGMEM = {8, 1, 0, 1, 0, 4, 0, 1, 0, 5, 0, 4, 0, 1, 0, 1, 0, 255};
+
+//MUSHROOM
 
 /////////////////////////////////////////PRESET POINTERS//////////////////////////////////////////////
 
@@ -89,12 +95,13 @@ const uint8_t *preset_pointers[][4] =
     {&c_turing[0], &blank[0], &blank[0], &blank[0]},
     //3 - HEAVEN
     {&c_heaven_c[0], &c_heaven_v[0], &l_heaven_c[0], &blank[0]},
-    //4 - KIDS
-    {&c_kids[0], &blank[0], &l_kids[0], &blank[0]},
+    //4 - KIDS and MUSHROOM
+    {&c_mushroom[0], &c_kids[0], &l_mushroom[0], &l_kids[0]},
     //5 - BELIEVE
     {&c_believe_v[0], &c_believe_c[0], &blank[0], &blank[0]},
-    //6 - ANIME
-    {&c_anime[0], &blank[0], &blank[0], &blank[0]},
+    //6 - PLAN B
+    {&c_planb[0], &blank[0], &blank[0], &blank[0]},
+   
     // FREE SPOTS
     {&blank[0], &blank[0], &blank[0], &blank[0]},
     {&blank[0], &blank[0], &blank[0], &blank[0]},
